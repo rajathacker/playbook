@@ -1,0 +1,19 @@
+---
+- name: Installing HTTPD
+  hosts: all
+  tasks:
+  - name: Installing HTTPD
+    yum:
+      name: httpd
+      state: latest
+  - name: Starting HTTPD Service
+    service:
+      name: httpd
+      state: started
+      enabled: true
+  - name: Adding http into firewalld
+    firewalld:
+      service: http
+      immediate: yes
+      permanent: yes
+      state: enabled
