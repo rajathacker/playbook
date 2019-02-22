@@ -11,9 +11,3 @@
       name: vsftpd
       state: started
       enabled: true
-  - name: Adding http into firewalld
-    firewalld:
-      service: ftp
-      immediate: yes
-      permanent: yes
-      state: enabled
