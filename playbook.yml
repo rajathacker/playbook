@@ -1,19 +1,19 @@
 ---
-- name: Installing HTTPD
+- name: Installing VSFTPD
   hosts: all
   tasks:
-  - name: Installing HTTPD
+  - name: Installing VSFTPD
     yum:
-      name: httpd
+      name: vsftpd
       state: latest
-  - name: Starting HTTPD Service
+  - name: Starting VSFTPD Service
     service:
-      name: httpd
+      name: vsftpd
       state: started
       enabled: true
   - name: Adding http into firewalld
     firewalld:
-      service: http
+      service: ftp
       immediate: yes
       permanent: yes
       state: enabled
