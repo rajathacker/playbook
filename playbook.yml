@@ -1,6 +1,8 @@
 ---
 - name: Installing VSFTPD
   hosts: all
+  vars_files:
+    - vars
   tasks:
   - name: Installing VSFTPD
     yum:
@@ -11,3 +13,7 @@
       name: vsftpd
       state: started
       enabled: true
+  - name: Creating a user
+    user:
+      name: "{{ user }}"
+      password: "{{ password | password_hash('sha512') }}"
